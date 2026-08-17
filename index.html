@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collatz Conjecture</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Collatz Conjecture</h1>
+
+    <p>Enter a positive number:</p>
+
+    <input type="number" id="number" min="1">
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            let n = Number(document.getElementById("number").value);
+            let result = "";
+
+            if (n < 1) {
+                document.getElementById("result").innerText =
+                    "Please enter a positive number.";
+                return;
+            }
+
+            while (n !== 1) {
+                result += n + " → ";
+
+                if (n % 2 === 0) {
+                    n = n / 2;
+                } else {
+                    n = 3 * n + 1;
+                }
+            }
+
+            result += "1";
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+
+</body>
+</html>
